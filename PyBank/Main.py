@@ -30,20 +30,20 @@ with open (budget_path,'r') as csvfile:  # open the csv file in a reding mode
     print("=======================================================")
     print(f"Total Months : {month} ")
     print(f"Total : {total}")
-    print(f"The average revenue change {revenue_average} ")
+    print("The average revenue change " + str ("{:.2f}".format(revenue_average) ))
     # print the greates increase with the correspondant amount using index to bring the value that has that index in the months list (+1 because we have 1 less in the revenue change beacause of the difference) 
     print(f"The Greatest revenue increase " + str(months[revenue_change.index(max(revenue_change))+1])+"  " +str(g_profit_increase) )
  # print the greates decrease with the correspondant amount using index to bring the value that has that index in the months list (+1 because we have 1 less in the revenue change beacause of the difference) 
     print(f"The Greatest revenue decrease "+ str(months[revenue_change.index(min(revenue_change))+1])+"  " + str(g_profit_decrease))
 
-    # write in the output test
+    # write in the output file
     outputpath= os.path.join ("/Users/zahra/Bootcamp/python-challenge/PyBank/analysis","Result.txt") # define the output path and output file name and extension in outputpath variable
     result=open(outputpath,"w")   #open the result txt file in writing mode
-    result.write("Financial Analysis"+"\n")    # print and return to the line 
-    result.write("--------------------------------------------------------------"+"\n")
-    result.write ("The total number of months "+ str(month)+"\n")
-    result.write ("The net total amount of Profit/Losses  "+ str(total)+"\n")
-    result.write ("The average changes in Profit/Losses "  + str(revenue_average)+"\n")
-     # print the greatest increase/decrease with the correspondant amoant using index to bring the value that has that index in the months list (+1 because we have 1 less in the revenue change beacause of the difference) 
+    result.write("Financial Analysis"+"\n")    # write in text file  and return to the line 
+    result.write("--------------------------------------------------------------"+"\n") # write in text file  and return to the line 
+    result.write ("The total number of months "+ str(month)+"\n")       # write in text file the number of months  and return to the line 
+    result.write ("The net total amount of Profit/Losses  "+ str(total)+"\n")   # write in text file the total amount 
+    result.write ("The average changes in Profit/Losses "  + str ("{:.2f}".format(revenue_average) )+"\n") ## write in text file the average of change and format it to 2 digit after decimal
+     # write the greatest increase/decrease with the correspondant amoant using index to bring the value that has that index in the months list (+1 because we have 1 less in the revenue change beacause of the difference) 
     result.write ("The greatest increase in profits "+ str(months[revenue_change.index(max(revenue_change))+1])+ " " +str(g_profit_increase)+"\n")
     result.write ("The greatest decrease in profits "+ str(months[revenue_change.index(min(revenue_change))+1])+" "+ str(g_profit_decrease)+ "\n")
